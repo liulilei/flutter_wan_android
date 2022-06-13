@@ -1,9 +1,9 @@
 import 'package:get/state_manager.dart';
 
-class HomePageState {
+class HomeState {
   late RxInt count;
 
-  HomePageState() {
+  HomeState() {
     count = 0.obs;
   }
 }

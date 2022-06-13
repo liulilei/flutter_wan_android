@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import 'state.dart';
 
-class HomePageLogic extends GetxController {
-  final state = HomePageState();
+class HomeLogic extends GetxController {
+  final state = HomeState();
 
   void increase() => state.count++;
 }

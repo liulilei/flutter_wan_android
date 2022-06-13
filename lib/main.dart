@@ -1,11 +1,38 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:test_futter/home_page/view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:get/get.dart';
+import 'package:test_flutter/widget/custom_loading_widget.dart';
+import 'package:test_flutter/widget/custom_toast_widget.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'app/config/route_config.dart';
+import 'app/helper/getx_route_observer.dart';
+
+void main() async {
+  // 解决启动白屏问题 或 Flutter2.5+首屏页面复杂，导致的加载异常问题
+  // main()方法并不是在Flutter给physicalSize赋值后才运行的，
+  // 这就导致部分机型性能比较好，还没赋值屏幕大小就可能启动渲染界面了。
+  // 如果size为有数值，监听测量回调，在回调中runApp
+  if (window.physicalSize.isEmpty) {
+    metricsFinish() async {
+      if (!window.physicalSize.isEmpty) {
+        window.onMetricsChanged = null;
+        // Add this line
+        await ScreenUtil.ensureScreenSize();
+        runApp(const MyApp());
+      }
+    }
+
+    window.onMetricsChanged = metricsFinish;
+  } else {
+    // Add this line
+    await ScreenUtil.ensureScreenSize();
+    runApp(const MyApp());
+  }
   if (Platform.isAndroid) {
     //设置Android头部的导航栏透明
 
@@ -29,59 +56,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'WanAndroid',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePagePage(),
+      initialRoute: RouteConfig.main,
+      getPages: RouteConfig.getPages,
+      navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
+      builder: FlutterSmartDialog.init(
+        toastBuilder: (String msg) => CustomToastWidget(msg: msg),
+        loadingBuilder: (String msg) => CustomLoadingWidget(msg: msg),
+        builder: _builder,
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+Widget _builder(BuildContext context, Widget? child) {
+  return MediaQuery(
+    ///设置字体不随系统字体变化
+    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+    child: child!!,
+  );
 }

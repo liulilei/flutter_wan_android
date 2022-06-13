@@ -1,4 +1,4 @@
-name: test_futter
+name: test_flutter
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -15,16 +15,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   dio: ^4.0.6
-  json_annotation: ^4.5.0
   flutter_smart_dialog: ^4.5.3+2
+  flutter_screenutil: ^5.5.3+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  json_serializable: ^6.2.0
-  build_runner: ^2.1.11
 
 flutter:
 
