@@ -12,8 +12,7 @@ class KeepAlivePage extends StatefulWidget {
   }
 }
 
-class _KeepAliveState extends State<KeepAlivePage>
-    with AutomaticKeepAliveClientMixin {
+class _KeepAliveState extends State<KeepAlivePage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 

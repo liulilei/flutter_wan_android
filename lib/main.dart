@@ -11,6 +11,8 @@ import 'package:test_flutter/widget/custom_toast_widget.dart';
 
 import 'app/config/route_config.dart';
 import 'app/helper/getx_route_observer.dart';
+import 'http/http.dart';
+import 'http/net/net_api.dart';
 
 void main() async {
   // 解决启动白屏问题 或 Flutter2.5+首屏页面复杂，导致的加载异常问题
@@ -49,6 +51,9 @@ void main() async {
 
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
+
+  ///初始化HTTP
+  Http.init(baseUrl: NetApi.baseUrl);
 }
 
 class MyApp extends StatelessWidget {
@@ -66,7 +71,7 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
       builder: FlutterSmartDialog.init(
         toastBuilder: (String msg) => CustomToastWidget(msg: msg),
-        loadingBuilder: (String msg) => CustomLoadingWidget(msg: msg),
+        loadingBuilder: (String msg) => const CustomLoadingWidget(msg: "加载中"),
         builder: _builder,
       ),
     );
@@ -77,6 +82,6 @@ Widget _builder(BuildContext context, Widget? child) {
   return MediaQuery(
     ///设置字体不随系统字体变化
     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-    child: child!!,
+    child: child!,
   );
 }

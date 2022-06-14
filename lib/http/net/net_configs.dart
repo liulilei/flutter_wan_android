@@ -4,9 +4,9 @@ class NetConfig {
   NetConfig._();
 
   /// 是否启用代理 代理服务IP 代理服务端口
-  static bool proxyEnable = false;
-  static String proxyIp = '';
-  static String proxyPort = '';
+  static bool proxyEnable = true;
+  static String proxyIp = '192.168.2.63';
+  static String proxyPort = '8888';
 
   /// 超时时间 20s
   static const int connectTimeout = 20000;

@@ -85,7 +85,7 @@ class NetUtil {
     int? sendTimeout,
     int? receiveTimeout,
     List<Interceptor>? interceptors,
-    bool proxyEnable = false,
+    bool proxyEnable = true,
     String proxyIp = '192.168.2.63',
     String proxyPort = '8888',
   }) {

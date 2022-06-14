@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:test_flutter/app/ui/show.dart';
 
 /// 错误处理拦截器
 class ErrorInterceptor extends Interceptor {
@@ -12,6 +13,7 @@ class ErrorInterceptor extends Interceptor {
     err.error = appException;
 
     handler.next(err);
+    showToast(appException.message);
   }
 }
 

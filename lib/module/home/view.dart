@@ -14,28 +14,28 @@ class HomePage extends StatelessWidget {
 
     //第一个界面初始化屏幕适配，设置尺寸（填写设计中设备的屏幕尺寸）如果设计基于360dp * 690dp的屏幕
     ScreenUtil.init(context, designSize: const Size(360, 690));
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text("测试类"),
-        ),
-      ),
-      body: Obx(() {
-        return Container(
-            width: 360.w,
-            height: 360.r,
-            color: Colors.red,
-            child: Text(
-              "点击了 ${state.count} 次",
-              style: TextStyle(fontSize: 30.sp),
-            ));
+      bottomNavigationBar: Obx(() {
+        return Theme(
+          data: Theme.of(context).copyWith(splashFactory: NoSplash.splashFactory),
+          child: BottomNavigationBar(
+              items: state.navigateItems,
+              currentIndex: state.currentIndex.value,
+              selectedItemColor: Colors.blue,
+              unselectedItemColor: Colors.grey,
+              selectedFontSize: 13.sp,
+              unselectedFontSize: 12.sp,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.white,
+              onTap: (int index) {
+                logic.selectIndex(index);
+              }),
+        );
       }),
-      floatingActionButton: FloatingActionButton(
-        child: const Text("自增"),
-        onPressed: () {
-          logic.increase();
-        },
-      ),
+      body: Obx(() {
+        return state.pageList[state.currentIndex.value];
+      }),
     );
   }
 }

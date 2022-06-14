@@ -5,5 +5,5 @@ import 'state.dart';
 class HomeLogic extends GetxController {
   final state = HomeState();
 
-  void increase() => state.count++;
+  void selectIndex(int index) => state.currentIndex.value = index;
 }
