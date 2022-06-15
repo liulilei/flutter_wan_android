@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:test_flutter/app/ui/show.dart';
+import 'package:test_flutter/utils/image_utils.dart';
 
 import '../../../../entity/banner_info.dart';
 
@@ -19,12 +19,7 @@ class MainBannerPage extends StatelessWidget {
       height: 135.h,
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return CachedNetworkImage(
-            imageUrl: bannerList[index].imagePath ?? "",
-            placeholder: (context, url) => Image.asset("images/default_img.png", fit: BoxFit.fill),
-            errorWidget: (context, url, error) => Image.asset("images/default_img.png", fit: BoxFit.fill),
-            fit: BoxFit.fill,
-          );
+          return ImageUtils.loadNormalImg(bannerList[index].imagePath ?? "");
         },
         itemCount: bannerList.length,
         pagination: const SwiperPagination(alignment: Alignment.bottomCenter),

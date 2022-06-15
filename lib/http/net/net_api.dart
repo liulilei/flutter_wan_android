@@ -6,4 +6,6 @@ class NetApi {
   static const String projectTree = "/project/tree/json";
 
   static const String banner = "/banner/json";
+
+  static String projectArticle(int page, int category) => "/project/list/$page/json?cid=$category";
 }

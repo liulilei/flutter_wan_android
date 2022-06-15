@@ -1,13 +1,15 @@
 import 'package:test_flutter/generated/json/base/json_convert_content.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
 
+import '../../entity/article_info.dart';
+
 ProjectTreeInfo $ProjectTreeInfoFromJson(Map<String, dynamic> json) {
 	final ProjectTreeInfo projectTreeInfo = ProjectTreeInfo();
 	final String? author = jsonConvert.convert<String>(json['author']);
 	if (author != null) {
 		projectTreeInfo.author = author;
 	}
-	final List<dynamic>? children = jsonConvert.convertListNotNull<dynamic>(json['children']);
+	final List<ArticleInfo>? children = jsonConvert.convertListNotNull<ArticleInfo>(json['children']);
 	if (children != null) {
 		projectTreeInfo.children = children;
 	}

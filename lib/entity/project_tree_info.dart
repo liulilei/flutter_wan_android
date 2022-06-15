@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/generated/json/base/json_field.dart';
 import 'package:test_flutter/generated/json/project_tree_info.g.dart';
 
@@ -6,7 +7,7 @@ import 'package:test_flutter/generated/json/project_tree_info.g.dart';
 class ProjectTreeInfo {
 
 	String? author;
-	List<dynamic>? children;
+	List<ArticleInfo>? children;
 	int? courseId;
 	String? cover;
 	String? desc;
