@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:test_flutter/app/typedef/function.dart';
 import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/utils/image_utils.dart';
@@ -7,20 +8,25 @@ import 'package:test_flutter/utils/image_utils.dart';
 /// @author lll
 /// @date on 2022/6/15
 class MainTabBarViewPage extends StatelessWidget {
-  const MainTabBarViewPage({Key? key, required this.articleInfo, required this.itemClick}) : super(key: key);
+  MainTabBarViewPage({Key? key, required this.articleInfo, required this.itemClick}) : super(key: key);
 
   final ArticleInfo? articleInfo;
 
   final ParamVoidCallback itemClick;
 
+  final RefreshController controller = RefreshController();
+
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (BuildContext context, int index) {
-        return _buildArticleCard(articleInfo?.datas![index]);
-      },
-      separatorBuilder: (_, i) => const Divider(height: 0, color: Colors.transparent),
-      itemCount: (articleInfo?.datas ?? []).length,
+    return SmartRefresher(
+      controller: controller,
+      child: ListView.separated(
+        itemBuilder: (BuildContext context, int index) {
+          return _buildArticleCard(articleInfo?.datas![index]);
+        },
+        separatorBuilder: (_, i) => const Divider(height: 0, color: Colors.transparent),
+        itemCount: (articleInfo?.datas ?? []).length,
+      ),
     );
   }
 

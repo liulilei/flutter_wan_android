@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:get/get.dart';
 import 'package:test_flutter/entity/article_info.dart';
 
 import '../../../entity/banner_info.dart';
@@ -13,11 +12,15 @@ class MainState {
 
   late SplayTreeMap<int, ArticleInfo> articleInfo;
 
+  late Map<int, int> loadPageMap;
+
   MainState() {
     projectTreeList = [];
 
     bannerList = [];
 
     articleInfo = SplayTreeMap<int, ArticleInfo>();
+
+    loadPageMap = {};
   }
 }
