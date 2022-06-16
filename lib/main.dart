@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:test_flutter/widget/custom_loading_widget.dart';
+import 'package:test_flutter/widget/custom_loading_widget_1.dart';
 import 'package:test_flutter/widget/custom_toast_widget.dart';
 
 import 'app/config/route_config.dart';
@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
         builder: FlutterSmartDialog.init(
           toastBuilder: (String msg) => CustomToastWidget(msg: msg),
-          loadingBuilder: (String msg) => const CustomLoadingWidget(msg: "加载中"),
+          loadingBuilder: (String msg) => const CustomLoadingWidget1(),
           builder: _builder,
         ),
       ),

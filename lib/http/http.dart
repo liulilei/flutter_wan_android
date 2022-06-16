@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../entity/base/base_response.dart';
@@ -133,7 +134,7 @@ class LoadingInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     //打开加载弹窗
-    if (isLoading) SmartDialog.showLoading();
+    if (isLoading) SmartDialog.showLoading(maskColor: Colors.transparent);
 
     handler.next(options);
   }
