@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter/app/ui/show.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
@@ -40,6 +42,12 @@ class FlutterWebView extends StatelessWidget {
             initialUrl: arguments[url] ?? "",
             onWebViewCreated: (webViewController) {
               _controller.complete(webViewController);
+              SmartDialog.showLoading();
+            },
+            onPageFinished: (_) {
+              if (SmartDialog.config.isExistLoading) {
+                SmartDialog.dismiss(status: SmartStatus.loading);
+              }
             },
           ),
           Positioned(left: 0, bottom: 0, right: 0, child: NavigationControls(_controller.future)),
@@ -67,7 +75,10 @@ class NavigationControls extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               IconButton(
-                icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.black54,),
+                icon: const Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Colors.black54,
+                ),
                 onPressed: !webViewReady
                     ? null
                     : () async {
@@ -80,7 +91,10 @@ class NavigationControls extends StatelessWidget {
                       },
               ),
               IconButton(
-                icon: const Icon(Icons.arrow_forward_ios_rounded, color: Colors.black54,),
+                icon: const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Colors.black54,
+                ),
                 onPressed: !webViewReady
                     ? null
                     : () async {
@@ -93,7 +107,10 @@ class NavigationControls extends StatelessWidget {
                       },
               ),
               IconButton(
-                icon: const Icon(Icons.replay_rounded, color: Colors.black54,),
+                icon: const Icon(
+                  Icons.replay_rounded,
+                  color: Colors.black54,
+                ),
                 onPressed: !webViewReady
                     ? null
                     : () {

@@ -1,7 +1,7 @@
 import 'package:test_flutter/generated/json/base/json_convert_content.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
+import 'package:test_flutter/entity/article_info.dart';
 
-import '../../entity/article_info.dart';
 
 ProjectTreeInfo $ProjectTreeInfoFromJson(Map<String, dynamic> json) {
 	final ProjectTreeInfo projectTreeInfo = ProjectTreeInfo();
@@ -63,7 +63,7 @@ ProjectTreeInfo $ProjectTreeInfoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $ProjectTreeInfoToJson(ProjectTreeInfo entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['author'] = entity.author;
-	data['children'] =  entity.children;
+	data['children'] =  entity.children?.map((v) => v.toJson()).toList();
 	data['courseId'] = entity.courseId;
 	data['cover'] = entity.cover;
 	data['desc'] = entity.desc;

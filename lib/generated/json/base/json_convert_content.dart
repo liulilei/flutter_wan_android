@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/entity/banner_info.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
+import 'package:test_flutter/entity/system_info.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
@@ -18,6 +19,8 @@ class JsonConvert {
 		(ArticleInfoDatasTags).toString(): ArticleInfoDatasTags.fromJson,
 		(BannerInfo).toString(): BannerInfo.fromJson,
 		(ProjectTreeInfo).toString(): ProjectTreeInfo.fromJson,
+		(SystemInfo).toString(): SystemInfo.fromJson,
+		(SystemInfoChildren).toString(): SystemInfoChildren.fromJson,
 	};
 
   T? convert<T>(dynamic value) {
@@ -107,6 +110,12 @@ class JsonConvert {
 		}
 		if(<ProjectTreeInfo>[] is M){
 			return data.map<ProjectTreeInfo>((Map<String, dynamic> e) => ProjectTreeInfo.fromJson(e)).toList() as M;
+		}
+		if(<SystemInfo>[] is M){
+			return data.map<SystemInfo>((Map<String, dynamic> e) => SystemInfo.fromJson(e)).toList() as M;
+		}
+		if(<SystemInfoChildren>[] is M){
+			return data.map<SystemInfoChildren>((Map<String, dynamic> e) => SystemInfoChildren.fromJson(e)).toList() as M;
 		}
 
 		debugPrint("${M.toString()} not found");
