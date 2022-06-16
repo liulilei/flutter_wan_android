@@ -12,13 +12,13 @@ class MainTabBarViewPage extends StatelessWidget {
 
   final ArticleInfo? articleInfo;
 
-  final ParamVoidCallback itemClick;
+  final ParamSingleCallback<ArticleInfoDatas?> itemClick;
 
   final RefreshController controller = RefreshController();
 
-  final ParamSingleCallback onRefresh;
+  final ParamSingleCallback<RefreshController> onRefresh;
 
-  final ParamSingleCallback onLoading;
+  final ParamSingleCallback<RefreshController> onLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class MainTabBarViewPage extends StatelessWidget {
         ),
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
-          onTap: () => itemClick(),
+          onTap: () => itemClick(articleInfo),
           child: Container(
             height: 170.w,
             padding: EdgeInsets.all(10.w),
