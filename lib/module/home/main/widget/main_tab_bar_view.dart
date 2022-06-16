@@ -8,7 +8,7 @@ import 'package:test_flutter/utils/image_utils.dart';
 /// @author lll
 /// @date on 2022/6/15
 class MainTabBarViewPage extends StatelessWidget {
-  MainTabBarViewPage({Key? key, required this.articleInfo, required this.itemClick}) : super(key: key);
+  MainTabBarViewPage({Key? key, required this.articleInfo, required this.itemClick, required this.onRefresh, required this.onLoading}) : super(key: key);
 
   final ArticleInfo? articleInfo;
 
@@ -16,10 +16,18 @@ class MainTabBarViewPage extends StatelessWidget {
 
   final RefreshController controller = RefreshController();
 
+  final ParamSingleCallback onRefresh;
+
+  final ParamSingleCallback onLoading;
+
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
       controller: controller,
+      enablePullDown: true,
+      enablePullUp: true,
+      onRefresh: () => onRefresh(controller),
+      onLoading: () => onLoading(controller),
       child: ListView.separated(
         itemBuilder: (BuildContext context, int index) {
           return _buildArticleCard(articleInfo?.datas![index]);

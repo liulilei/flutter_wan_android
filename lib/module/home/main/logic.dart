@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:test_flutter/constants/constants.dart';
 import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/entity/banner_info.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
@@ -33,14 +35,35 @@ class MainLogic extends GetxController {
   }
 
   void getBannerList() async {
-    var bannerList = await Http.get(NetApi.banner, isLoading: false);
+    var bannerList = await Http.get(NetApi.banner);
     state.bannerList = (bannerList as List).map((e) => BannerInfo.fromJson(e)).toList();
     update();
   }
 
-  void getProjectArticle(int id, int index) async {
-    var articleInfo = await Http.get(NetApi.projectArticle(1, id));
-    state.articleInfo[index] = ArticleInfo.fromJson(articleInfo);
+  void getProjectArticle(int pageNo, int id, int index, bool hasDialog, {RefreshController? controller}) async {
+    var articleJson = await Http.get(NetApi.projectArticle(pageNo, id), isLoading: hasDialog);
+    if (articleJson == null) {
+      if (controller?.isRefresh == true) {
+        controller?.refreshFailed();
+      }
+      if (controller?.isLoading == true) {
+        controller?.loadFailed();
+      }
+      return;
+    }
+    var articleInfo = ArticleInfo.fromJson(articleJson);
+    state.loadPageMap[index] = articleInfo.curPage ?? pageNo;
+    if (pageNo == Constants.defaultPageNo) {
+      state.articleInfo[index] = articleInfo;
+      controller?.refreshCompleted(resetFooterState: true);
+    } else {
+      state.articleInfo[index]?.addData(articleInfo, false);
+      if (articleInfo.over == false) {
+        controller?.loadComplete();
+      } else {
+        controller?.loadNoData();
+      }
+    }
     update();
   }
 }

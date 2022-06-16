@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:test_flutter/widget/custom_loading_widget.dart';
 import 'package:test_flutter/widget/custom_toast_widget.dart';
 
@@ -61,18 +62,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'WanAndroid',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: RouteConfig.main,
-      getPages: RouteConfig.getPages,
-      navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
-      builder: FlutterSmartDialog.init(
-        toastBuilder: (String msg) => CustomToastWidget(msg: msg),
-        loadingBuilder: (String msg) => const CustomLoadingWidget(msg: "加载中"),
-        builder: _builder,
+    return RefreshConfiguration(
+      headerBuilder: () => const WaterDropHeader(waterDropColor: Colors.blue),
+      enableScrollWhenRefreshCompleted: true,
+      hideFooterWhenNotFull: true,
+      child: GetMaterialApp(
+        title: 'WanAndroid',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: RouteConfig.main,
+        getPages: RouteConfig.getPages,
+        navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
+        builder: FlutterSmartDialog.init(
+          toastBuilder: (String msg) => CustomToastWidget(msg: msg),
+          loadingBuilder: (String msg) => const CustomLoadingWidget(msg: "加载中"),
+          builder: _builder,
+        ),
       ),
     );
   }
