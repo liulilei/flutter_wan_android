@@ -34,7 +34,10 @@ class HomePage extends StatelessWidget {
         );
       }),
       body: Obx(() {
-        return state.pageList[state.currentIndex.value];
+        return IndexedStack(
+          index: state.currentIndex.value,
+          children: state.pageList,
+        );
       }),
     );
   }
