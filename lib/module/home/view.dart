@@ -12,9 +12,6 @@ class HomePage extends StatelessWidget {
     final logic = Get.put(HomeLogic());
     final state = Get.find<HomeLogic>().state;
 
-    //第一个界面初始化屏幕适配，设置尺寸（填写设计中设备的屏幕尺寸）如果设计基于360dp * 690dp的屏幕
-    ScreenUtil.init(context, designSize: const Size(360, 690));
-
     return Scaffold(
       bottomNavigationBar: Obx(() {
         return Theme(

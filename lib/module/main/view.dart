@@ -1,5 +1,6 @@
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter/app/ui/keep_alive_page.dart';
@@ -20,6 +21,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.put(MainLogic());
     final state = Get.find<MainLogic>().state;
+
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
 
     return GetBuilder<MainLogic>(builder: (logic) {
       return DefaultTabController(

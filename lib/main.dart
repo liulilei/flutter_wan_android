@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: RouteConfig.main,
+        initialRoute: RouteConfig.splash,
         getPages: RouteConfig.getPages,
         navigatorObservers: [FlutterSmartDialog.observer, GetXRouteObserver()],
         builder: FlutterSmartDialog.init(

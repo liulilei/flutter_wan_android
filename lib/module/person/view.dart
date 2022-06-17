@@ -13,8 +13,11 @@ class PersonPage extends StatelessWidget {
   static const desc = '''本项目使用GetX框架搭建，包含以下技术点：
   * 页面路由
   * 状态管理
-  * 网络请求
-  * 多语言翻译
+  * Dio网络请求
+  * pull_to_refresh 下拉刷新，上拉加载
+  * 图片加载
+  * Lottie动画加载
+  * 屏幕适配
   * UI：Tab页面、侧边抽屉栏、列表、富文本等
   * WebView加载网页
   
@@ -22,6 +25,7 @@ class PersonPage extends StatelessWidget {
   * Flutter项目目录结构和代码组织
   * 网络请求封装
   * Tab页懒加载
+  * Tab页ListView滑动时，其他tab跟着滑动
 
 基于GitHub开源项目学习：''';
 
