@@ -1,5 +1,10 @@
+import 'package:get/get.dart';
+
 class PersonState {
+
+  late RxBool showTitle;
+
   PersonState() {
-    ///Initialize variables
+    showTitle = false.obs;
   }
 }

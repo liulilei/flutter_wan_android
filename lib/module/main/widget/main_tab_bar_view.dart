@@ -55,7 +55,7 @@ class MainTabBarViewPage extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: 90.w, height: 150.w, child: ImageUtils.loadNormalImg(articleInfo?.envelopePic ?? "")),
+                SizedBox(width: 90.w, height: 150.h, child: ImageUtils.loadNormalImg(articleInfo?.envelopePic ?? "")),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(10.w),
