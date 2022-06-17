@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
-import 'package:test_flutter/module/home/navigate/wdiget/navigate_left.dart';
-import 'package:test_flutter/module/home/navigate/wdiget/navigate_right.dart';
+import 'package:test_flutter/module/navigate/wdiget/navigate_left.dart';
+import 'package:test_flutter/module/navigate/wdiget/navigate_right.dart';
 
 import '../../../app/ui/web_view.dart';
 import 'logic.dart';

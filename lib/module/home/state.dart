@@ -3,10 +3,10 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:test_flutter/app/ui/keep_alive_page.dart';
-import 'package:test_flutter/module/home/main/view.dart';
-import 'package:test_flutter/module/home/navigate/view.dart';
-import 'package:test_flutter/module/home/person/view.dart';
-import 'package:test_flutter/module/home/system/view.dart';
+import 'package:test_flutter/module/main/view.dart';
+import 'package:test_flutter/module/navigate/view.dart';
+import 'package:test_flutter/module/person/view.dart';
+import 'package:test_flutter/module/system/view.dart';
 
 class HomeState {
   late RxInt currentIndex;

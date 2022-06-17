@@ -6,9 +6,9 @@ import 'package:test_flutter/app/ui/keep_alive_page.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
 import 'package:test_flutter/app/ui/web_view.dart';
 import 'package:test_flutter/constants/constants.dart';
-import 'package:test_flutter/module/home/main/widget/main_banner.dart';
-import 'package:test_flutter/module/home/main/widget/main_tab_bar.dart';
-import 'package:test_flutter/module/home/main/widget/main_tab_bar_view.dart';
+import 'package:test_flutter/module/main/widget/main_banner.dart';
+import 'package:test_flutter/module/main/widget/main_tab_bar.dart';
+import 'package:test_flutter/module/main/widget/main_tab_bar_view.dart';
 
 import '../../../app/ui/lazy_load_builder.dart';
 import 'logic.dart';

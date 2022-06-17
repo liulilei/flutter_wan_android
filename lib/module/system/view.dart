@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter/app/ui/show.dart';
-import 'package:test_flutter/module/home/system/widget/system_list.dart';
+import 'package:test_flutter/module/system/widget/system_list.dart';
 
 import '../../../app/ui/title_app_bar.dart';
 import 'logic.dart';
