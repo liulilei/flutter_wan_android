@@ -9,6 +9,8 @@ import 'package:test_flutter/app/ui/show.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../config/route_config.dart';
+
 /// @author lll
 /// @date on 2022/6/16
 class FlutterWebView extends StatelessWidget {
@@ -17,6 +19,10 @@ class FlutterWebView extends StatelessWidget {
   static const String title = "title";
 
   static const String url = "url";
+
+  static start(String? titleValue, String? urlValue) {
+    Get.toNamed(RouteConfig.webView, arguments: {title: titleValue, url: urlValue});
+  }
 
   final Completer<WebViewController> _controller = Completer<WebViewController>();
 

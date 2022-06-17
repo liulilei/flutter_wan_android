@@ -6,6 +6,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/entity/banner_info.dart';
+import 'package:test_flutter/entity/navigate_info.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
 import 'package:test_flutter/entity/system_info.dart';
 
@@ -18,6 +19,8 @@ class JsonConvert {
 		(ArticleInfoDatas).toString(): ArticleInfoDatas.fromJson,
 		(ArticleInfoDatasTags).toString(): ArticleInfoDatasTags.fromJson,
 		(BannerInfo).toString(): BannerInfo.fromJson,
+		(NavigateInfo).toString(): NavigateInfo.fromJson,
+		(NavigateInfoArticles).toString(): NavigateInfoArticles.fromJson,
 		(ProjectTreeInfo).toString(): ProjectTreeInfo.fromJson,
 		(SystemInfo).toString(): SystemInfo.fromJson,
 		(SystemInfoChildren).toString(): SystemInfoChildren.fromJson,
@@ -107,6 +110,12 @@ class JsonConvert {
 		}
 		if(<BannerInfo>[] is M){
 			return data.map<BannerInfo>((Map<String, dynamic> e) => BannerInfo.fromJson(e)).toList() as M;
+		}
+		if(<NavigateInfo>[] is M){
+			return data.map<NavigateInfo>((Map<String, dynamic> e) => NavigateInfo.fromJson(e)).toList() as M;
+		}
+		if(<NavigateInfoArticles>[] is M){
+			return data.map<NavigateInfoArticles>((Map<String, dynamic> e) => NavigateInfoArticles.fromJson(e)).toList() as M;
 		}
 		if(<ProjectTreeInfo>[] is M){
 			return data.map<ProjectTreeInfo>((Map<String, dynamic> e) => ProjectTreeInfo.fromJson(e)).toList() as M;

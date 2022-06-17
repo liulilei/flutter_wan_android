@@ -2,7 +2,6 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:test_flutter/app/config/route_config.dart';
 import 'package:test_flutter/app/ui/keep_alive_page.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
 import 'package:test_flutter/app/ui/web_view.dart';
@@ -61,11 +60,9 @@ class MainPage extends StatelessWidget {
                 if ((state.articleInfo[e.key]?.datas ?? []).isNotEmpty) {
                   return KeepAlivePage(MainTabBarViewPage(
                     articleInfo: state.articleInfo[e.key],
-                    itemClick: (articleInfo) => {
-                      Get.toNamed(RouteConfig.webView, arguments: {FlutterWebView.title: articleInfo?.title, FlutterWebView.url: articleInfo?.link})
-                    },
-                    onRefresh: (controller) => {logic.getProjectArticle(Constants.defaultPageNo, e.value.id ?? 0, e.key, false, controller: controller)},
-                    onLoading: (controller) => {logic.getProjectArticle(state.loadPageMap[e.key]! + 1, e.value.id ?? 0, e.key, false, controller: controller)},
+                    itemClick: (articleInfo) => FlutterWebView.start(articleInfo?.title, articleInfo?.link),
+                    onRefresh: (controller) => logic.getProjectArticle(Constants.defaultPageNo, e.value.id ?? 0, e.key, false, controller: controller),
+                    onLoading: (controller) => logic.getProjectArticle(state.loadPageMap[e.key]! + 1, e.value.id ?? 0, e.key, false, controller: controller),
                   ));
                 } else {
                   return LazyLoadBuilder(onBuild: () => logic.getProjectArticle(Constants.defaultPageNo, e.value.id ?? 0, e.key, true));
