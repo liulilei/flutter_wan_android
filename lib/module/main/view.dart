@@ -1,6 +1,5 @@
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter/app/ui/keep_alive_page.dart';
@@ -12,6 +11,7 @@ import 'package:test_flutter/module/main/widget/main_tab_bar.dart';
 import 'package:test_flutter/module/main/widget/main_tab_bar_view.dart';
 
 import '../../../app/ui/lazy_load_builder.dart';
+import '../../utils/image_utils.dart';
 import 'logic.dart';
 
 class MainPage extends StatelessWidget {
@@ -26,12 +26,11 @@ class MainPage extends StatelessWidget {
       return DefaultTabController(
         length: state.projectTreeList.length,
         child: Scaffold(
-          appBar: TitleAppBar(
-              title: "首页",
-              leading: GestureDetector(
-                onTap: () => logic.clickScan(),
-                child: const Icon(Icons.qr_code_scanner_rounded),
-              ),
+          appBar: TitleAppBar(title: "首页",
+              // leading: GestureDetector(
+              //   onTap: () => logic.clickScan(),
+              //   child: const Icon(Icons.qr_code_scanner_rounded),
+              // ),
               actions: [
                 Container(
                   padding: EdgeInsets.only(right: 16.w),
@@ -51,6 +50,7 @@ class MainPage extends StatelessWidget {
                   pinned: true,
                   floating: true,
                   titleSpacing: 0,
+                  automaticallyImplyLeading: false,
                   title: MainBannerPage(bannerList: state.bannerList),
                   bottom: MainTabBarPage(projectTreeList: state.projectTreeList),
                 )
@@ -71,6 +71,42 @@ class MainPage extends StatelessWidget {
               }).toList(),
             ),
             physics: const BouncingScrollPhysics(),
+          ),
+          drawer: Container(
+            width: 250.w,
+            height: double.infinity,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ImageUtils.loadNormalImg(
+                  "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F21%2F20200321171802_etypu.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658303279&t=24202894765df2a0797ce5878cc96116",
+                  width: 250.w,
+                ),
+                InkWell(
+                  onTap: () => FlutterWebView.start("liulilei", "https://github.com/liulilei"),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.person_rounded, color: Colors.black),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          "关于我们",
+                          style: TextStyle(fontSize: 14.sp, color: Colors.black),
+                        ),
+                        const Icon(
+                          Icons.arrow_right_rounded,
+                          color: Colors.black,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
