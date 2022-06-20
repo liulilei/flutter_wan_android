@@ -84,7 +84,7 @@ class MainPage extends StatelessWidget {
                   width: 250.w,
                 ),
                 InkWell(
-                  onTap: () => FlutterWebView.start("liulilei", "https://github.com/liulilei"),
+                  onTap: () => FlutterWebView.start("Liull", "https://github.com/liulilei"),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
