@@ -21,7 +21,7 @@ class NavigateRightPage extends StatelessWidget {
     if (articles.isBlank == true) {
       return Expanded(
         child: Container(
-          color: Colors.blue,
+          color: Colors.white,
           alignment: Alignment.center,
           child: const Text("Nav is null"),
         ),

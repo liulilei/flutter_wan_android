@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:test_flutter/constants/constants.dart';
 import 'package:test_flutter/entity/article_info.dart';
@@ -6,6 +7,7 @@ import 'package:test_flutter/entity/banner_info.dart';
 import 'package:test_flutter/entity/project_tree_info.dart';
 import 'package:test_flutter/http/http.dart';
 import 'package:test_flutter/http/net/net_api.dart';
+import 'package:test_flutter/utils/request_permission.dart';
 
 import '../../../app/ui/show.dart';
 import 'state.dart';
@@ -20,12 +22,11 @@ class MainLogic extends GetxController {
     getBannerList();
   }
 
-  void clickScan() {
-    showToast("扫码");
-  }
-
-  void clickSearch() {
-    showToast("搜索");
+  void clickScan() async {
+    bool hasPermission = await PermissionUtils.requestPermission(Permission.camera);
+    if (hasPermission) {
+      showToast("扫码");
+    }
   }
 
   void getProjectList() async {

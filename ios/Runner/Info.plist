@@ -45,5 +45,9 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+
+	<key>NSCameraUsageDescription</key>
+    <string>需要使用您的摄像头，进行扫码</string>
+
 </dict>
 </plist>

@@ -27,16 +27,12 @@ class MainPage extends StatelessWidget {
         length: state.projectTreeList.length,
         child: Scaffold(
           appBar: TitleAppBar(title: "首页",
-              // leading: GestureDetector(
-              //   onTap: () => logic.clickScan(),
-              //   child: const Icon(Icons.qr_code_scanner_rounded),
-              // ),
               actions: [
                 Container(
                   padding: EdgeInsets.only(right: 16.w),
                   child: GestureDetector(
-                    onTap: () => logic.clickSearch(),
-                    child: const Icon(Icons.search_rounded),
+                    onTap: () => logic.clickScan(),
+                    child: const Icon(Icons.qr_code_scanner_rounded),
                   ),
                 )
               ]),
