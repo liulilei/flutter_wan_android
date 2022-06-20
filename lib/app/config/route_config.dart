@@ -15,8 +15,8 @@ class RouteConfig {
 
   ///别名映射页面
   static final List<GetPage> getPages = [
-    GetPage(name: splash, page: () => const SplashPage()),
-    GetPage(name: main, page: () => const HomePage(), transition: Transition.rightToLeftWithFade),
+    GetPage(name: splash, page: () => const SplashPage(), transition: Transition.rightToLeftWithFade),
+    GetPage(name: main, page: () => const HomePage()),
     GetPage(name: webView, page: () => FlutterWebView(), transition: Transition.downToUp),
   ];
 }

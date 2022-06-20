@@ -2,11 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter/app/typedef/function.dart';
 
 /// @author lll
 /// @date on 2022/6/17
 class CountDownWidget extends StatefulWidget {
-  const CountDownWidget({Key? key}) : super(key: key);
+  const CountDownWidget({this.countDownTime = 3000, this.textStyle, this.circularColor = Colors.blue, required this.onTop, Key? key}) : super(key: key);
+
+  final num countDownTime;
+
+  final TextStyle? textStyle;
+
+  final Color circularColor;
+
+  final ParamVoidCallback onTop;
 
   @override
   State<StatefulWidget> createState() => _CountDownWidgetState();
@@ -19,8 +28,6 @@ class _CountDownWidgetState extends State<CountDownWidget> {
   ///记录当前的时间
   int currentTimer = 0;
 
-  int countDown = 3000;
-
   @override
   void initState() {
     super.initState();
@@ -30,12 +37,13 @@ class _CountDownWidgetState extends State<CountDownWidget> {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       ///自增
       currentTimer += 100;
+      setState(() {});
 
       ///到5秒后停止
-      if (currentTimer >= countDown) {
+      if (currentTimer >= widget.countDownTime + 100) {
         _timer.cancel();
+        widget.onTop();
       }
-      setState(() {});
     });
   }
 
@@ -56,17 +64,20 @@ class _CountDownWidgetState extends State<CountDownWidget> {
           ///圆形进度
           CircularProgressIndicator(
             strokeWidth: 2.5.w,
-            backgroundColor: Colors.blue,
+            backgroundColor: widget.circularColor,
             color: Colors.white,
 
             ///当前指示的进度 0.0 -1.0
-            value: 1 - currentTimer / 3000,
+            value: 1 - currentTimer / widget.countDownTime,
           ),
 
           ///显示的文本
-          Text(
-            "跳过",
-            style: TextStyle(color: Colors.blue, fontSize: 12.sp),
+          GestureDetector(
+            onTap: () => widget.onTop(),
+            child: Text(
+              "跳过",
+              style: widget.textStyle ?? TextStyle(color: Colors.blue, fontSize: 12.sp),
+            ),
           ),
         ],
       ),

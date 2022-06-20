@@ -22,8 +22,6 @@ class MainPage extends StatelessWidget {
     final logic = Get.put(MainLogic());
     final state = Get.find<MainLogic>().state;
 
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
-
     return GetBuilder<MainLogic>(builder: (logic) {
       return DefaultTabController(
         length: state.projectTreeList.length,
