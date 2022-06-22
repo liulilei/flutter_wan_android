@@ -26,7 +26,7 @@ class MainLogic extends GetxController {
   void clickScan() async {
     bool hasPermission = await PermissionUtils.requestPermission(Permission.camera);
     if (hasPermission) {
-      String result = await Get.toNamed(RouteConfig.qrScreen);
+      String? result = await Get.toNamed(RouteConfig.qrScreen);
       if (result?.isNotEmpty == true) {
         showToast(result);
       }

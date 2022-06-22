@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:test_flutter/app/ui/show.dart';
+import 'package:test_flutter/app/ui/web_view.dart';
 import 'package:test_flutter/utils/image_utils.dart';
 
 import '../../../../entity/banner_info.dart';
@@ -25,7 +26,7 @@ class MainBannerPage extends StatelessWidget {
         pagination: const SwiperPagination(alignment: Alignment.bottomCenter),
         loop: true,
         autoplay: true,
-        onTap: (int index) => showToast("点击啦"),
+        onTap: (int index) => FlutterWebView.start(bannerList[index].title, bannerList[index].url),
       ),
     );
   }
