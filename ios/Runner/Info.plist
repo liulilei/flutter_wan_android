@@ -26,7 +26,6 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<key>io.flutter.embedded_views_preview</key>
-	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>需要使用您的摄像头，进行扫码</string>
 	<key>UILaunchStoryboardName</key>
