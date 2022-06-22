@@ -73,7 +73,10 @@ class _CountDownWidgetState extends State<CountDownWidget> {
 
           ///显示的文本
           GestureDetector(
-            onTap: () => widget.onTop(),
+            onTap: () {
+              _timer.cancel();
+              widget.onTop();
+            },
             child: Text(
               "跳过",
               style: widget.textStyle ?? TextStyle(color: Colors.blue, fontSize: 12.sp),

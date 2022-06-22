@@ -7,7 +7,6 @@ import 'package:test_flutter/app/ui/title_app_bar.dart';
 import 'package:test_flutter/app/ui/web_view.dart';
 import 'package:test_flutter/constants/constants.dart';
 import 'package:test_flutter/module/main/widget/main_banner.dart';
-import 'package:test_flutter/module/main/widget/main_tab_bar.dart';
 import 'package:test_flutter/module/main/widget/main_tab_bar_view.dart';
 
 import '../../../app/ui/lazy_load_builder.dart';
@@ -26,16 +25,15 @@ class MainPage extends StatelessWidget {
       return DefaultTabController(
         length: state.projectTreeList.length,
         child: Scaffold(
-          appBar: TitleAppBar(title: "首页",
-              actions: [
-                Container(
-                  padding: EdgeInsets.only(right: 16.w),
-                  child: GestureDetector(
-                    onTap: () => logic.clickScan(),
-                    child: const Icon(Icons.qr_code_scanner_rounded),
-                  ),
-                )
-              ]),
+          appBar: TitleAppBar(title: "首页", actions: [
+            Container(
+              padding: EdgeInsets.only(right: 16.w),
+              child: GestureDetector(
+                onTap: () => logic.clickScan(),
+                child: const Icon(Icons.qr_code_scanner_rounded),
+              ),
+            )
+          ]),
           body: ExtendedNestedScrollView(
             onlyOneScrollInBody: true,
             headerSliverBuilder: (BuildContext context, bool flag) {
@@ -48,7 +46,10 @@ class MainPage extends StatelessWidget {
                   titleSpacing: 0,
                   automaticallyImplyLeading: false,
                   title: MainBannerPage(bannerList: state.bannerList),
-                  bottom: MainTabBarPage(projectTreeList: state.projectTreeList),
+                  bottom: TabBar(
+                    tabs: state.projectTreeList.map((e) => Tab(text: e.name)).toList(),
+                    isScrollable: true,
+                  ),
                 )
               ];
             },
@@ -78,6 +79,7 @@ class MainPage extends StatelessWidget {
                 ImageUtils.loadNormalImg(
                   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F21%2F20200321171802_etypu.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658303279&t=24202894765df2a0797ce5878cc96116",
                   width: 250.w,
+                  height: 180.h,
                 ),
                 InkWell(
                   onTap: () => FlutterWebView.start("Liull", "https://github.com/liulilei"),

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:test_flutter/app/config/route_config.dart';
 import 'package:test_flutter/constants/constants.dart';
 import 'package:test_flutter/entity/article_info.dart';
 import 'package:test_flutter/entity/banner_info.dart';
@@ -25,7 +26,10 @@ class MainLogic extends GetxController {
   void clickScan() async {
     bool hasPermission = await PermissionUtils.requestPermission(Permission.camera);
     if (hasPermission) {
-      showToast("扫码");
+      String result = await Get.toNamed(RouteConfig.qrScreen);
+      if (result?.isNotEmpty == true) {
+        showToast(result);
+      }
     }
   }
 
