@@ -28,13 +28,20 @@ class MainTabBarViewPage extends StatelessWidget {
       enablePullUp: true,
       onRefresh: () => onRefresh(controller),
       onLoading: () => onLoading(controller),
-      child: ListView.separated(
-        itemBuilder: (BuildContext context, int index) {
-          return _buildArticleCard(articleInfo?.datas![index]);
-        },
-        separatorBuilder: (_, i) => const Divider(height: 0, color: Colors.transparent),
-        itemCount: (articleInfo?.datas ?? []).length,
-      ),
+      child: (articleInfo?.datas ?? []).isEmpty
+          ? Center(
+              child: Text(
+                "暂无数据",
+                style: TextStyle(fontSize: 18.sp),
+              ),
+            )
+          : ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                return _buildArticleCard(articleInfo?.datas![index]);
+              },
+              separatorBuilder: (_, i) => const Divider(height: 0, color: Colors.transparent),
+              itemCount: (articleInfo?.datas ?? []).length,
+            ),
     );
   }
 
