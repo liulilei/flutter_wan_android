@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.rightToLeft,
-        title: 'WanAndroid',
+        title: '玩安卓',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Colors.blue,
