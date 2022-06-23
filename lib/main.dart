@@ -62,9 +62,14 @@ class MyApp extends StatelessWidget {
       enableScrollWhenRefreshCompleted: true,
       hideFooterWhenNotFull: true,
       child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.rightToLeftWithFade,
         title: 'WanAndroid',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          primaryColor: Colors.blue,
+          scaffoldBackgroundColor: Colors.white,
+          brightness: Brightness.light,
         ),
         initialRoute: RouteConfig.splash,
         getPages: RouteConfig.getPages,

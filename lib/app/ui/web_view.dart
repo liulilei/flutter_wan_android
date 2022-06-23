@@ -48,7 +48,7 @@ class FlutterWebView extends StatelessWidget {
             initialUrl: arguments[url] ?? "",
             onWebViewCreated: (webViewController) {
               _controller.complete(webViewController);
-              SmartDialog.showLoading();
+              SmartDialog.showLoading(maskColor: Colors.transparent, clickMaskDismiss: true);
             },
             onPageFinished: (_) {
               if (SmartDialog.config.isExistLoading) {
