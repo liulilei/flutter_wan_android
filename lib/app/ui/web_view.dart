@@ -32,6 +32,7 @@ class FlutterWebView extends StatelessWidget {
     // Enable virtual display.
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: TitleAppBar(
         title: arguments[title] ?? "",
         leading: GestureDetector(

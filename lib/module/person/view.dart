@@ -20,6 +20,9 @@ class PersonPage extends StatelessWidget {
   * 屏幕适配
   * UI：Tab页面、侧边抽屉栏、列表、富文本等
   * WebView加载网页
+  * android/ios 配置启动页
+  * 权限申请
+  * 扫描二维码
   
 解决问题：
   * Flutter项目目录结构和代码组织

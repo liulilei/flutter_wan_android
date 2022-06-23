@@ -19,7 +19,7 @@ class RouteConfig {
   ///别名映射页面
   static final List<GetPage> getPages = [
     GetPage(name: splash, page: () => const SplashPage()),
-    GetPage(name: main, page: () => const HomePage()),
+    GetPage(name: main, page: () => const HomePage(), transition: Transition.rightToLeftWithFade),
     GetPage(name: webView, page: () => FlutterWebView()),
     GetPage(name: qrScreen, page: () => const QrCodeScreenPage()),
   ];

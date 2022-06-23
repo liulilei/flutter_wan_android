@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
       hideFooterWhenNotFull: true,
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.rightToLeftWithFade,
+        defaultTransition: Transition.rightToLeft,
         title: 'WanAndroid',
         theme: ThemeData(
           primarySwatch: Colors.blue,
