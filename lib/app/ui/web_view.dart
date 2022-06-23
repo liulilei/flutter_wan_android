@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:test_flutter/app/ui/back_leading.dart';
 import 'package:test_flutter/app/ui/show.dart';
 import 'package:test_flutter/app/ui/title_app_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -35,13 +36,7 @@ class FlutterWebView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: TitleAppBar(
         title: arguments[title] ?? "",
-        leading: GestureDetector(
-          onTap: () => Get.back(),
-          child: const Icon(
-            Icons.arrow_back_ios_rounded,
-            color: Colors.white,
-          ),
-        ),
+        leading: const BackLeading(),
       ),
       body: Stack(
         children: [

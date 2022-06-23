@@ -16,10 +16,7 @@ class NavigatePage extends StatelessWidget {
     final state = Get.find<NavigateLogic>().state;
 
     return Scaffold(
-      appBar: TitleAppBar(
-        title: "导航",
-        leading: Container(),
-      ),
+      appBar: const TitleAppBar(title: "导航"),
       body: Obx(() {
         return Row(
           children: [
