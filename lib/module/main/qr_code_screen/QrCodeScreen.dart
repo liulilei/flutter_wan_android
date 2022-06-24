@@ -35,30 +35,20 @@ class QrCodeScreenPageState extends State<QrCodeScreenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Expanded(
-            child: QRView(
-              key: qrKey,
-              overlay: QrScannerOverlayShape(borderColor: Colors.blue),
-              onQRViewCreated: _onQRViewCreated,
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 150.h,
-            child: GestureDetector(
-              onTap: () async {
-                await controller?.toggleFlash();
-                isFlash = await controller?.getFlashStatus() ?? false;
-                setState(() {});
-              },
-              child: Icon(size: 30.w, isFlash ? Icons.flashlight_on_rounded : Icons.flashlight_off_rounded, color: isFlash ? Colors.blue : Colors.grey),
-            ),
-          )
-        ],
+      body: QRView(
+        key: qrKey,
+        overlay: QrScannerOverlayShape(borderColor: Colors.blue),
+        onQRViewCreated: _onQRViewCreated,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await controller?.toggleFlash();
+          isFlash = await controller?.getFlashStatus() ?? false;
+          setState(() {});
+        },
+        child: Icon(size: 30.w, isFlash ? Icons.flashlight_on_rounded : Icons.flashlight_off_rounded, color: isFlash ? Colors.white : Colors.black),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
