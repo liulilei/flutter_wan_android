@@ -48,17 +48,13 @@ class NavigateRightPage extends StatelessWidget {
             ))
         .toList();
     return Expanded(
+      ///子组件超出，使用滚动布局，不滚动标题，只滚动标签
       child: Container(
         padding: EdgeInsets.all(10.w),
         alignment: Alignment.topLeft,
-
-        ///Column直接套子组件会超出，使用Expanded包一层，填满
-        child: Expanded(
-          ///子组件超出，使用滚动布局，不滚动标题，只滚动标签
-          child: SingleChildScrollView(
-            child: Wrap(
-              children: articleList,
-            ),
+        child: SingleChildScrollView(
+          child: Wrap(
+            children: articleList,
           ),
         ),
       ),
