@@ -29,6 +29,8 @@ class PersonPage extends StatelessWidget {
   * 网络请求封装
   * Tab页懒加载
   * Tab页ListView滑动时，其他tab跟着滑动
+  * qr_code_scanner release下白屏不能使用stack包裹
+  * release下Expanded显示灰屏，Expanded、Flexible只在Row、Column等组件内，不在其他组件内使用。
 
 基于GitHub开源项目学习：''';
 
