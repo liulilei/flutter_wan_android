@@ -15,7 +15,7 @@ import 'app/helper/getx_route_observer.dart';
 import 'http/http.dart';
 import 'http/net/net_api.dart';
 
-void main() async {
+void main() {
   // 解决启动白屏问题 或 Flutter2.5+首屏页面复杂，导致的加载异常问题
   // main()方法并不是在Flutter给physicalSize赋值后才运行的，
   // 这就导致部分机型性能比较好，还没赋值屏幕大小就可能启动渲染界面了。
@@ -24,18 +24,24 @@ void main() async {
     metricsFinish() async {
       if (!window.physicalSize.isEmpty) {
         window.onMetricsChanged = null;
-        // Add this line
-        await ScreenUtil.ensureScreenSize();
-        runApp(const MyApp());
+        _loadMyApp();
       }
     }
 
     window.onMetricsChanged = metricsFinish;
   } else {
-    // Add this line
-    await ScreenUtil.ensureScreenSize();
-    runApp(const MyApp());
+    _loadMyApp();
   }
+
+  ///初始化HTTP
+  Http.init(baseUrl: NetApi.baseUrl);
+}
+
+void _loadMyApp() async {
+  // Add this line
+  await ScreenUtil.ensureScreenSize();
+  runApp(const MyApp());
+
   if (Platform.isAndroid) {
     //设置Android头部的导航栏透明
     SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
@@ -47,9 +53,6 @@ void main() async {
 
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
-
-  ///初始化HTTP
-  Http.init(baseUrl: NetApi.baseUrl);
 }
 
 class MyApp extends StatelessWidget {
