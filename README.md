@@ -22,9 +22,9 @@
   - qr_code_scanner release下白屏不能使用stack包裹
   - release下Expanded显示灰屏，Expanded、Flexible只在Row、Column等组件内，不在其他组件内使用。
 
-基于GitHub开源项目学习： https://github.com/Afauria/GetX-WanAndroid
-
 感谢鸿洋大神的WanAndroid Api：https://www.wanandroid.com/blog/show/2
+
+基于GitHub开源项目学习： https://github.com/Afauria/GetX-WanAndroid
 
 ## 如需体验请扫描二维码下载：
 ![image](https://user-images.githubusercontent.com/10026173/175843832-2ad52f91-318f-47d2-8012-7958a45c9336.png)
