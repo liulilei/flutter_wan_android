@@ -31,7 +31,5 @@
 
 IOS 请下载项目在ios模拟器上运行。
 
-https://user-images.githubusercontent.com/10026173/175847493-fba7e461-8aa8-431f-b5a7-fd447b749978.mp4
-
 
 
