@@ -30,3 +30,8 @@
 ![image](https://user-images.githubusercontent.com/10026173/175843832-2ad52f91-318f-47d2-8012-7958a45c9336.png)
 
 IOS 请下载项目在ios模拟器上运行。
+
+https://user-images.githubusercontent.com/10026173/175847493-fba7e461-8aa8-431f-b5a7-fd447b749978.mp4
+
+
+
