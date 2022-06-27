@@ -23,6 +23,7 @@
   - release下Expanded显示灰屏，Expanded、Flexible只在Row、Column等组件内，不在其他组件内使用。
 
 基于GitHub开源项目学习： https://github.com/Afauria/GetX-WanAndroid
+
 感谢鸿洋大神的WanAndroid Api：https://www.wanandroid.com/blog/show/2
 
 ## 如需体验请扫描二维码下载：
